@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+
+    <title>Wellcome Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <section id="container-wellcom" class="container justify-content-center">
+        <h1 class="row">Memory Game</h1>
+        <form id="submit-wellcom" class="text-input">
+            <div class="name row col-7">
+                <p>Name:</p>
+                <input class="input-submit-text" id="inputText" title="your name or nickname" type="text" />
+            </div>
+            <div class="number row col-7">
+                <p>Card Pairs Number:</p>
+                <input class="input-submit-text" title="place number of pairs" id="input-num-cards" placeholder="1-30"
+                    type="number" max="30" />
+            </div>
+            <div class="row col-5">
+                <input class="button-brown" id="submit" type="submit" title="play games" value="Start Play" />
+            </div>
+        </form>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

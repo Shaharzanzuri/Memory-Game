@@ -1,0 +1,539 @@
+* {
+
+    box-sizing: border-box;
+    background: #d9d4c9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: .05em;
+}
+
+body {
+    display: contents;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* input text for all  */
+.input-text {
+    text-align: center;
+    border-radius: 4px;
+    text-align: center;
+    border-width: 0.8px;
+    border-color: rgba(144, 113, 107, 0.557);
+    background-color: rgb(241, 238, 233);
+}
+
+
+/* index page css */
+
+.container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 15px;
+    size: 400px;
+    color: rgb(50, 94, 94);
+    font-size: 70px;
+    font-weight: 1000;
+}
+
+
+
+#submit-wellcom p {
+    margin-bottom: 0%;
+    font-size: small;
+    text-align: start;
+    align-items: start;
+}
+
+#submit-wellcom div {
+    margin: 10%;
+}
+
+#submit-wellcom {
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* index css end */
+
+
+
+/* game css */
+#headline {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    size: 100px;
+    font-weight: 1000;
+}
+
+#headline h1 {
+    display: flex;
+    text-align: center;
+    align-items: center;
+
+}
+
+
+/* general white button  */
+.button-white {
+    display: block;
+    color: rgba(104, 88, 77, 0.749);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: .05em;
+    font-weight: 600;
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px;
+    background-color: #ffffff;
+    border-color: rgba(104, 88, 77, 0.749);
+    border-radius: 5px;
+}
+
+.button-white:hover {
+    color: rgb(123, 59, 59);
+    border-style: solid;
+    background-color: #ffffff;
+    border-color: rgb(123, 59, 59);
+}
+
+/* --- */
+
+
+/* button brown css */
+.button-brown {
+    color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: .05em;
+    font-weight: 600;
+    border-width: 2px;
+    border-style: solid;
+    padding: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-color: rgba(104, 88, 77, 0.749);
+    background-color: rgba(104, 88, 77, 0.749);
+    border-radius: 4px;
+}
+
+.button-brown:hover {
+    color: rgba(104, 88, 77, 0.749);
+    background-color: #ffffff;
+    border-color: rgba(104, 88, 77, 0.749);
+}
+
+/* ------ */
+
+
+.input-submit-text {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 200px;
+    border-radius: 4px;
+    margin: 4px;
+    height: 38px;
+    border-width: 0.8px;
+    border-color: rgba(144, 113, 107, 0.557);
+    background-color: rgb(241, 238, 233);
+}
+
+
+
+.cards-number-headline p {
+    position: relative;
+    margin-top: 0px;
+    font-size: 30px;
+    display: flex;
+    align-items: end;
+    text-align: end;
+    color: rgb(123, 59, 59);
+    font-weight: 700;
+}
+
+.cards-number-headline div {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: start;
+    text-align: start;
+}
+
+.headline {
+    font-size: 50px;
+    color: rgb(123, 59, 59);
+}
+
+#name-player {
+    font-size: 55px;
+    color: rgb(123, 59, 59);
+    -webkit-text-stroke: 2px black;
+}
+
+#num-cards {
+    font-weight: 700;
+    color: rgb(123, 59, 59);
+    font-size: x-large;
+    margin-top: 0px;
+    display: flex;
+    align-items: end;
+    text-align: end;
+}
+
+.head {
+    text-align: center;
+}
+
+.row {
+    text-align: center;
+}
+
+.cards-number {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-right: 5%;
+}
+
+.cards-number-headline {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.cards-number-headline div {
+    margin-bottom: 0px;
+}
+
+#change-cards-number {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.input-number {
+    text-align: center;
+    border-radius: 4px;
+    margin: 5px;
+    height: 38px;
+    width: 75px;
+    text-align: center;
+    border-width: 0.8px;
+    border-color: rgba(144, 113, 107, 0.557);
+    background-color: rgb(241, 238, 233);
+}
+
+
+
+
+.table-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+}
+
+
+#table-headline {
+    background-color: rgb(109, 100, 93);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: .05em;
+    text-align: start;
+    align-items: center;
+    font-weight: 550;
+    color: #ffffff;
+    border-width: 2px;
+    border-style: solid;
+    padding: 5px;
+    border-color: rgba(104, 88, 77, 0.749);
+    border-radius: 4px;
+
+}
+
+#table-headline p {
+    background-color: rgb(109, 100, 93);
+    text-align: start;
+    align-items: center;
+}
+
+
+.table {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    margin-bottom: 30px;
+
+}
+
+.table h3 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.table-container {
+
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+
+}
+
+#scoreTable table {
+    width: 30px;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: .05em;
+}
+
+.game-score th {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: .05em;
+}
+
+.game-score table th,
+td {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: .05em;
+}
+
+
+.game-score td {
+    font-size: large;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.start-game-button {
+    margin-top: 15px;
+    background-color: #83c4c4;
+    font-weight: 500;
+    font-size: 16px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(90, 108, 122, 0.749);
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    letter-spacing: .05em;
+}
+
+.start-game-button:hover {
+    border-color: #83c4c4;
+    background-color: #ffffff;
+    color: #83c4c4;
+}
+
+
+.game-buttons {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+
+.timer {
+    display: contents;
+    align-items: center;
+    text-align: center;
+}
+
+.timer p {
+    display: contents;
+    align-items: center;
+    text-align: center;
+    font-size: 25px;
+}
+
+#timer {
+    margin: 5px;
+    height: 38px;
+    width: 75px;
+    color: rgb(79, 47, 30);
+    font-weight: 400;
+}
+
+
+
+.timer-pairs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.pairs {
+    display: contents;
+    align-items: center;
+    text-align: center;
+}
+
+.pairs p {
+    font-size: 30px;
+    display: contents;
+    align-items: center;
+    text-align: center;
+}
+
+.pairs input {
+    border-radius: 4px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    width: 30px;
+    padding: 4px;
+    border-style: solid;
+    border-color: rgba(104, 88, 77, 0.749);
+    background-color: rgba(104, 88, 77, 0.749);
+    border-radius: 4px;
+    color: #fff;
+}
+
+#cards-container.container div {
+    border-radius: 10px;
+    margin: 5px;
+    border: none;
+    /* box-sizing: border-box; */
+
+}
+
+#cards-container {
+
+    margin-bottom: 40px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cards,
+.card,
+.view {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.card {
+    position: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 100px;
+    margin: 7px;
+    background-color: none;
+    cursor: pointer;
+}
+
+.view {
+    position: absolute;
+    background-color: none;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+}
+
+.card.shake {
+    animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-13px);
+    }
+
+    40% {
+        transform: translateX(13px);
+    }
+
+    60% {
+        transform: translateX(-8px);
+    }
+
+    80% {
+        transform: translateX(8px);
+    }
+}
+
+
+.card .view {
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    background: none;
+    pointer-events: none;
+    backface-visibility: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s linear;
+}
+
+
+.card .front-view div {
+    width: 19px;
+}
+
+.card .back-view div {
+    max-width: 45px;
+}
+
+.card .back-view {
+    transform: rotateY(-180deg);
+    background-color: none;
+}
+
+.card.flip .back-view {
+    transform: rotateY(0);
+}
+
+.card.flip .front-view {
+    transform: rotateY(180deg);
+}
