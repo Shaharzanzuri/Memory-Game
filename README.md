@@ -1,11 +1,8 @@
 # Memory-Game
 
-## page 1
 <img width="601" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/63e617b9-bccb-4e08-8719-e9c1f195e051">
-
-## page 2 : GAME
 <img width="958" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/fb68686d-45e9-4825-9154-1021cf36c168">
-
+## the game:
 ### changing number of cards:
 <img width="158" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/ff2623db-9b39-47fe-98f6-9d94c83a485a">
 <img width="169" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/20de7db8-0ff3-467d-a42a-675d78c10bf4">
