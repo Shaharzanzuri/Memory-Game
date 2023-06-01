@@ -6,7 +6,6 @@
 ## the game: 
 
 ### changing number of cards:
-<img width="158" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/ff2623db-9b39-47fe-98f6-9d94c83a485a">
 <img width="169" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/20de7db8-0ff3-467d-a42a-675d78c10bf4">
 <img width="162" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/76289d6c-ce1b-41d1-aedf-4c8c64305332">
 
