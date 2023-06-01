@@ -645,7 +645,6 @@ form_countdown.addEventListener("click", (e) => {
 
 
 
-
 form_clock.addEventListener("click", (e) => {
     e.preventDefault();
     deleteCountdown();
@@ -660,10 +659,9 @@ form_cards_number.addEventListener("submit", (e) => {
         return;
     };
     cardsnumber = parseInt(inputNumber.value);
+    document.getElementById("num-cards-div").getElementsByTagName("p")[1].innerHTML = cardsnumber;
     localStorage.setItem("num_cards", JSON.stringify(cardsnumber));
     sizeLocalList = 0
-    localStorage.setItem("sizeLocalList", JSON.stringify(sizeLocalList));
-    location.reload();
 });
 
 
