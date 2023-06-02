@@ -1,7 +1,7 @@
 # Memory-Game
 
 <img width="601" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/63e617b9-bccb-4e08-8719-e9c1f195e051">
-<img width="958" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/fb68686d-45e9-4825-9154-1021cf36c168">
+<img width="937" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/fe355211-584a-455c-8fa6-5caa07a852ce">
 
 ## the game: 
 
