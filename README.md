@@ -28,6 +28,5 @@
 
 ## end game
 <img width="939" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/913658d1-694d-4753-888b-ca764976a4b6">
-<img width="947" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/c3402ba7-8382-4358-960e-77f97b97a4ca">
 
 
