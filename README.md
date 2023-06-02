@@ -9,10 +9,6 @@
 <img width="169" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/20de7db8-0ff3-467d-a42a-675d78c10bf4">
 <img width="162" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/76289d6c-ce1b-41d1-aedf-4c8c64305332">
 
-### score table :
-<img width="935" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/be9dbccb-3943-47a3-a141-bac2d5dd4b55">
-<img width="212" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/0fe979da-2612-4e9d-b14a-3febdea71f82">
-
 ### play with countdown
 <img width="185" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/385ac312-da67-4a86-8230-2dcf96dc94b8">
 <img width="241" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/438d355d-3544-4fcd-9e37-77b7ae254111">
@@ -26,7 +22,12 @@
 <img width="901" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/3155b990-d1fe-4e18-9db0-7a279b2a65dd">
 <img width="921" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/42660301-03d0-4b53-b677-4de399b6c8ce">
 
+### score table :
+<img width="935" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/be9dbccb-3943-47a3-a141-bac2d5dd4b55">
+<img width="212" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/0fe979da-2612-4e9d-b14a-3febdea71f82">
+
 ## end game
+<img width="939" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/913658d1-694d-4753-888b-ca764976a4b6">
 <img width="947" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/c3402ba7-8382-4358-960e-77f97b97a4ca">
 
 
