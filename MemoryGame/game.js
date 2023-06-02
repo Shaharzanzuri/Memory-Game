@@ -39,7 +39,7 @@ let listCards = [];
 
 const headline = `${nameplayer} 🤓`; //the title of the headline\\
 
-changeHeadline(headline); //display the headline to the name of the player 
+changeHeadlineName(headline); //display the headline to the name of the player 
 document.getElementById("num-cards").innerText = cardsnumber;//display the number of cards
 
 
@@ -54,7 +54,7 @@ let rowCounter = 0;
 let num = cardsnumber / 2;
 let mapCards = new Map();//map to the cards value
 
-
+let game = false;
 //initial index array //
 let arr = [num];
 for (let i = 0; i < num; i++) {
@@ -80,44 +80,38 @@ getGame();
 
 // FUNCTIONS \\
 
+// display the table score and cards from localStorage data \\
 function getGame() {
     getGamesTableScore();
     renderCards();
 }
 
-// save to local storage \\
-function saveGame() {
-    saveCardsList();
-    saveGameScore();
-}
-
-
-
-// start the game fuunction \\
-function gameStart() {
-    button_start.value = "Stop Game";
-    createBoard();
-    changeHeadline(headline)
-}
-
-
+//start clock game \\
 function startClockGame() {
     gameStart();
     interval = setInterval(timeGenerator, 1000);
 }
 
+//start countdown game \\
 function startBackTimerGame() {
     gameStart();
     interval = setInterval(timeBackGenerator, 1000);
 
 }
 
-// end the game function \\
+// start the game (cards display and clock) \\
+function gameStart() {
+    button_start.value = "Stop Game";
+    createBoard();
+    changeHeadlineName(headline)
+    game = true;
+}
+
+// end the game function (local storage handler) \\
 function endGame() {
     deleteStartGameButton();
     deleteCountdown();
     clearInterval(interval);
-    saveGameScore(playCount, timer.value);
     addRow(playCount, parseInt(pairs_el.value), timer.value);
     removeCardsList();
     cardsClass.innerHTML = "";
@@ -126,8 +120,8 @@ function endGame() {
     seconds = 0; minutes = 0;
     listCards = [];
     pairs_el.value = 0;
+    game = false;
 }
-
 
 // win function \\
 function win() {
@@ -137,46 +131,48 @@ function win() {
             shuffleCard();
             endGame();
         }, 400);
-        changeHeadline(`YOU WIN! 🤗`);
+        youWinHeadline();
         return;
     }
 
 }
 
 
+// LOCAL STORAGE HANDLER \\
 
-//return the game scores table from the local storage 
+// -------
+
+// display the game score table from the local storage 
 function getGamesTableScore() {
     for (let i = 1; i <= playCount; i++) {
         const timeplay = getPlayScore(i);
-        addRow(i, pairs_el.value, timeplay);
+        winScores.push(displayRow(i, timeplay[0], timeplay[1]));
     }
+    renderTable();
 }
 
+// returns a reference to play score from local storage
 function getPlayScore(id) {
-    const result = JSON.parse(localStorage.getItem(`"game-${id}"`));
+    const result = JSON.parse(localStorage.getItem(`game-${id}`)).split(",");
     console.log(result);
     return result;
 }
 
-
-//save game time to the local storage \\
-function saveGameScore(id, time) {
-    localStorage.setItem(`"game-${id + 1}"`, JSON.stringify(time));
+//save game score to the local storage \\
+function saveGameScore(id, pairs, time) {
+    localStorage.setItem(`game-${id + 1}`, JSON.stringify(`${pairs},${time}`));
     playCount++;
     localStorage.setItem("playCount", JSON.stringify(playCount));
 }
 
-
 //remove game time from the local storage \\
 function removeGameScore(id) {
-    localStorage.removeItem(`"game-${id}"`);
+    localStorage.removeItem(`game-${id}`);
     --playCount;
     window.localStorage.setItem("playCount", JSON.stringify(playCount));
 }
 
-
-//gets from the local storage the list of saved card
+//from the local storage the list of saved card
 function getListCards() {
     let size = localStorage.getItem("sizeLocalList");
     let list = [];
@@ -201,7 +197,6 @@ function getListCards() {
     return list;
 }
 
-
 //saving the list cards \\
 function saveCardsList() {
     let sizeLocalList = 0;
@@ -213,12 +208,10 @@ function saveCardsList() {
     localStorage.setItem("sizeLocalList", JSON.stringify(sizeLocalList));
 }
 
-
 // save a card to the local storage \\
 function saveCard(index, id, value) {
     localStorage.setItem(`"card-${index}"`, JSON.stringify(id) + "," + `${value}`);
 }
-
 
 // removing the cards list values local storage \\
 function removeCardsList() {
@@ -227,14 +220,12 @@ function removeCardsList() {
     }
 }
 
-
 // remove card from the local storage \\
 function removeCard(index) {
     localStorage.removeItem(`"card-${index}"`);
     --sizeLocalList;
     localStorage.setItem("sizeLocalList", JSON.stringify(sizeLocalList));
 }
-
 
 //remove local storage \\
 function removeLocal() {
@@ -244,13 +235,181 @@ function removeLocal() {
     }
 }
 
+// ----------
 
 // changing the headline title \\
-function changeHeadline(string) {
+function changeHeadlineName(string) {
+    document.getElementsByClassName("headline")[0].innerHTML = "GOOD LUCK";
     document.getElementById("name-player").innerHTML = string;
 }
 
+//change the headline to win headline
+function youWinHeadline() {
+    document.getElementsByClassName("headline")[0].innerHTML = "";
+    document.getElementById("name-player").innerHTML = "YOU WIN! 🤗 ";
+}
 
+
+// BUTTONS GAME: //
+
+const timeBack = document.getElementById("timer-back");//countdown
+let valueTime = "";
+
+// create timer generator for clock play\\
+const timeGenerator = () => {
+    seconds += 1;
+    if (seconds >= 60) {
+        minutes += 1;
+        seconds = 0;
+    }
+    // format time beffor displaying //
+    let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
+    let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+    timer.value = `${minutesValue}:${secondsValue}`;
+}
+
+//initialize and generate the clock game \\
+function timerBack(min, sec) {
+    valueTime = `${min}:${sec}`;
+    console.log("log in to timer back()");
+    seconds = sec;
+    minutes = min;
+
+}
+
+// initialize and generate the countdown game \\
+const timeBackGenerator = () => {
+
+    seconds--;
+    if (seconds == 0 && minutes == 0) {
+        timer.value = "00:00";
+        endGame();
+    }
+    if (seconds <= 0) {
+        minutes--;
+        seconds = 60;
+    }
+    // format time beffor displaying //
+    let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
+    let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
+    timer.value = `${minutesValue}:${secondsValue}`;
+
+}
+
+var countdown_el = null; //the countdown input elemant
+//create the countdown submit input
+function createCountdown() {
+    const countdownButton = document.createElement("input");
+    countdownButton.id = "time";
+    countdownButton.type = "time";
+    countdownButton.title = "place countdown time here";
+    countdownButton.className = "input-number";
+    countdownButton.classList.add("col-auto")
+    form_countdown.appendChild(countdownButton);
+    createStartGameButton("countdown");
+    countdown_el = countdownButton;
+    const submit_buttun_el = form_countdown.getElementsByClassName("submit-button")[0];
+    submit_buttun_el.value = "save";//changing the button value to SAVE
+    submit_buttun_el.classList.add("col-auto");
+
+}
+
+//delets the countdown submit input
+function deleteCountdown() {
+    if (countdown_el) {
+        console.log("enter delete countdown")
+        var submit_buttun_el = form_countdown.getElementsByTagName("input")[0];
+        var submit_time_el = form_countdown.getElementsByTagName("input")[1];
+        console.log(submit_time_el.value);
+        console.log(timer.value);
+        timer.value = mathTimeString(submit_time_el.value, timer.value);
+        console.log(timer.value);
+        submit_buttun_el.value = "countdown";//changing the button value back to countdown;
+        form_countdown.removeChild(submit_time_el);
+        countdown_el = null;
+
+        // countdown_el = null;
+    }
+}
+
+// calculate the time for the countdown //
+function mathTimeString(time1, time2) {
+    console.log("enter math");
+    let time_1 = time1.split(":");
+    let time_2 = time2.split(":");
+    let newTime = [];
+    console.log(time_1, time_2);
+    time_1[0] = parseInt(time_1[0]);
+    time_1[1] = parseInt(time_1[1]);
+    time_2[0] = parseInt(time_2[0]);
+    time_2[1] = parseInt(time_2[1]);
+    console.log(time_1, time_2);
+    let timeSec1 = time_1[0] * 60 + time_1[1];
+    let timeSec2 = time_2[0] * 60 + time_2[1];
+    let calc = timeSec1 - timeSec2;
+    console.log(calc);
+    let minutes;
+    let seconds
+    if (calc >= 60) {
+        minutes = calc / 60;
+        seconds = calc % 60;
+    } else {
+        minutes = "0";
+        seconds = calc;
+    }
+    console.log(minutes, seconds);
+    return `0${minutes}:${seconds}`;
+
+}
+
+//save the countdown value
+function saveCountdown(target) {
+    console.log("save countdown function");
+    value = document.getElementById("time").value;
+    console.log(value);
+    var time = JSON.stringify(value).slice(1).split(":");
+    console.log(time);
+    let minutesBack = parseInt(time[0]);
+    let secondsBack = parseInt(time[1]);
+    console.log(minutesBack, secondsBack);
+    if ((!minutesBack && minutesBack != 0) || (!secondsBack && secondsBack != 0)) {
+
+        alert("you need to fill the timer numbers");
+        return;
+    }
+    timerBack(minutesBack, secondsBack);
+}
+
+// create and display a START GAME button specific to the game(countdown||clock)
+var button_start;//a variable that pints the button var
+function createStartGameButton(mode) {
+    if (!button_start) {
+        const startButton = document.createElement("input");
+        startButton.className = "start-game-button";
+        startButton.type = "submit";
+        startButton.value = "Start Game";
+        startButton.title = "start the game";
+        if (mode === "countdown") {
+            startButton.id = "start-game-countdown";
+        } else {
+            console.log("start-clock-button");
+            startButton.id = "start-game-clock";
+        }
+        form_start_game.appendChild(startButton);
+        button_start = startButton;
+    }
+}
+
+//removes the button START GAME \\
+function deleteStartGameButton() {
+    form_start_game.innerHTML = "";
+    button_start = null;
+}
+
+// -------
+
+
+// BOARD: //
 
 // createBoard cards;
 function createBoard() {
@@ -262,7 +421,6 @@ function createBoard() {
     saveCardsList();
     renderCards();
 }
-
 
 //create random card from the elements\\
 function createCard() {
@@ -311,51 +469,10 @@ function renderCards() {
 }
 
 
-// create timer generator for clock play\\
-const timeGenerator = () => {
-    seconds += 1;
-    if (seconds >= 60) {
-        minutes += 1;
-        seconds = 0;
-    }
-    // format time beffor displaying //
-    let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
-    let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-    timer.value = `${minutesValue}:${secondsValue}`;
-}
-
-const timeBack = document.getElementById("timer-back");
-
-let valueTime = "";
-function timerBack(min, sec) {
-    valueTime = `${min}:${sec}`;
-    console.log("log in to timer back()");
-    seconds = sec;
-    minutes = min;
-
-}
+//CARDS : //
 
 
-const timeBackGenerator = () => {
-
-    seconds--;
-    if (seconds == 0 && minutes == 0) {
-        timer.value = "00:00";
-        endGame();
-    }
-    if (seconds <= 0) {
-        minutes--;
-        seconds = 60;
-    }
-    // format time beffor displaying //
-    let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
-    let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-    timer.value = `${minutesValue}:${secondsValue}`;
-
-}
-
-
-//flip a card the card function \\
+//flip a card \\
 function flipCard(clickedCard) {
     if (cardOne !== clickedCard && !disableDeck) {
         clickedCard.classList.add("flip");
@@ -372,8 +489,7 @@ function flipCard(clickedCard) {
     }
 }
 
-
-// dnction to check 2 cards are mach \\
+//check 2 cards are mach \\
 function matchCards(id1, id2) {
     if (id1 === id2) {
         matched++;
@@ -405,7 +521,6 @@ function matchCards(id1, id2) {
     }, 1200);
 }
 
-
 // function to shuffle the cards to the back side \\
 function shuffleCard() {
     matched = 0;
@@ -421,50 +536,55 @@ function shuffleCard() {
 }
 shuffleCard();
 
+// --------
 
 
-// Add a new row to the table score game winsSores
+
+// TABLE //
+
+
+// Add new row to the table score (localstore handler)
 function addRow(i, pairs, time) {
-    if (!pairs) {
-        pairs = 0;
-    }
+    let newRow = displayRow(i, pairs, time);
+    winScores.push(newRow);
+    saveGameScore(i, pairs, time);
+    renderTable()
+
+}
+//delets a row from table score (localstore handler) \\
+function deleteRow(i) {
+    winScores.splice(i - 1, 1);
+    removeGameScore(i);
+    renderTable();
+}
+//display row table on the screen \\
+function displayRow(id, pairs, time) {
+    let i = id;
     const stringhtml = `
-    <td class="col">Game ${i}</td>
-    <td class="col">${pairs}</td>
-    <td class="col">${time}</td>
-     `
+        <td class="col">Game ${i}</td>
+        <td class="col">${pairs}</td>
+        <td class="col">${time}</td>
+         `
     const newRow = document.createElement("tr");
     newRow.className = "row";
     newRow.id = playCount;
     newRow.innerHTML = stringhtml;
-    winScores.push(newRow);
-    scoreTable.appendChild(newRow)
-    renderTable();
+    scoreTable.appendChild(newRow);
+    return newRow;
 
 }
-
-
-// reset the table score \\
+// reset the table score (localstore handler) \\
 function resetTable() {
     let i = 1;
     while (playCount > 0) {
         deleteRow(i);
         i++;
     }
+    playCount = 0;
+    localStorage.setItem("playCount", JSON.stringify(playCount));
     winScores = [];
 }
-
-
-//delets a row
-function deleteRow(i) {
-    winScores.splice(i - 1, 1);
-    removeGameScore(i);
-    renderTable();
-}
-
-
-
-// render the table game time  \\
+// render the table game score  \\
 function renderTable() {
     scoreTable.innerHTML = "";
     // Todo Tasks
@@ -479,6 +599,7 @@ function renderTable() {
 
 }
 
+// ----------
 
 
 // Checks for input number qualify for the cards number \\
@@ -497,119 +618,6 @@ function inputNumberError() {
 
 }
 
-var countdown_el = null;
-//create the countdown submit input
-function createCountdown() {
-    const countdownButton = document.createElement("input");
-    countdownButton.id = "time";
-    countdownButton.type = "time";
-    countdownButton.title = "place countdown time here";
-    countdownButton.className = "input-number";
-    form_countdown.appendChild(countdownButton);
-    createStartGameButton("countdown");
-    countdown_el = countdownButton;
-    const submit_buttun_el = form_countdown.getElementsByClassName("submit-button")[0];
-    submit_buttun_el.value = "save";//changing the button value to SAVE
-
-}
-
-
-//delets the countdown submit input
-function deleteCountdown() {
-    if (countdown_el) {
-        console.log("enter delete countdown")
-        var submit_buttun_el = form_countdown.getElementsByTagName("input")[0];
-        var submit_time_el = form_countdown.getElementsByTagName("input")[1];
-        console.log(submit_time_el.value);
-        console.log(timer.value);
-        timer.value = mathTimeString(submit_time_el.value, timer.value);
-        console.log(timer.value);
-        submit_buttun_el.value = "countdown";//changing the button value back to countdown;
-        form_countdown.removeChild(submit_time_el);
-        countdown_el = null;
-
-        // countdown_el = null;
-    }
-}
-
-
-// calculate the time for the countdown //
-function mathTimeString(time1, time2) {
-    console.log("enter math");
-    let time_1 = time1.split(":");
-    let time_2 = time2.split(":");
-    let newTime = [];
-    console.log(time_1, time_2);
-    time_1[0] = parseInt(time_1[0]);
-    time_1[1] = parseInt(time_1[1]);
-    time_2[0] = parseInt(time_2[0]);
-    time_2[1] = parseInt(time_2[1]);
-    console.log(time_1, time_2);
-    let timeSec1 = time_1[0] * 60 + time_1[1];
-    let timeSec2 = time_2[0] * 60 + time_2[1];
-    let calc = timeSec1 - timeSec2;
-    console.log(calc);
-    let minutes;
-    let seconds
-    if (calc >= 60) {
-        minutes = calc / 60;
-        seconds = calc % 60;
-    } else {
-        minutes = "0";
-        seconds = calc;
-    }
-    console.log(minutes, seconds);
-    return `0${minutes}:${seconds}`;
-
-}
-
-
-//save the countdown value
-function saveCountdown(target) {
-    console.log("save countdown function");
-    value = document.getElementById("time").value;
-    console.log(value);
-    var time = JSON.stringify(value).slice(1).split(":");
-    console.log(time);
-    let minutesBack = parseInt(time[0]);
-    let secondsBack = parseInt(time[1]);
-    console.log(minutesBack, secondsBack);
-    if ((!minutesBack && minutesBack != 0) || (!secondsBack && secondsBack != 0)) {
-
-        alert("you need to fill the timer numbers");
-        return;
-    }
-    timerBack(minutesBack, secondsBack);
-}
-
-
-// create and display a START GAME button specific to the game(countdown||clock)
-var button_start;//a variable that pints the button var
-function createStartGameButton(mode) {
-    if (!button_start) {
-        const startButton = document.createElement("input");
-        startButton.className = "start-game-button";
-        startButton.type = "submit";
-        startButton.value = "Start Game";
-        startButton.title = "start the game";
-        if (mode === "countdown") {
-            startButton.id = "start-game-countdown";
-        } else {
-            console.log("start-clock-button");
-            startButton.id = "start-game-clock";
-        }
-        form_start_game.appendChild(startButton);
-        button_start = startButton;
-    }
-}
-
-
-//removes the button START GAME \\
-function deleteStartGameButton() {
-    form_start_game.innerHTML = "";
-    button_start = null;
-}
-
 
 // ------------
 
@@ -618,8 +626,28 @@ function deleteStartGameButton() {
 
 
 //handle cards number changing \\
+form_cards_number.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const target = e.target;
+    if (inputNumberError() === 0) {
+        return;
+    };
+    removeCardsList();
+    listCards = [];
+    cardsnumber = (parseInt(inputNumber.value) * 2);
+    console.log(cardsnumber);
+    num = cardsnumber / 2;
+    document.getElementById("num-cards-div").getElementsByTagName("p")[1].innerHTML = cardsnumber;
+    localStorage.setItem("num_cards", JSON.stringify(num));
+    sizeLocalList = 0
+    localStorage.setItem("sizeLocalList", JSON.stringify(sizeLocalList));
+    if (game) {
+        endGame();
+    }
+});
 
 
+// handle "click" on the countdown button \\
 form_countdown.addEventListener("click", (e) => {
     e.preventDefault();
     const action = e.target.value;
@@ -636,33 +664,18 @@ form_countdown.addEventListener("click", (e) => {
     else {
         if (action === "saved") {
             e.target.value = "save";
+            return;
         }
     }
 
 });
 
-
-
-
-
+// handle "click" on the clock button \\
 form_clock.addEventListener("click", (e) => {
     e.preventDefault();
     deleteCountdown();
     createStartGameButton("clock");
 })
-
-
-form_cards_number.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const target = e.target;
-    if (inputNumberError() === 0) {
-        return;
-    };
-    cardsnumber = parseInt(inputNumber.value);
-    document.getElementById("num-cards-div").getElementsByTagName("p")[1].innerHTML = cardsnumber;
-    localStorage.setItem("num_cards", JSON.stringify(cardsnumber));
-    sizeLocalList = 0
-});
 
 
 //handler the reset table button \\
@@ -703,8 +716,3 @@ cardsClass.addEventListener("click", (e) => {
     return;
 
 });
-
-
-
-
-

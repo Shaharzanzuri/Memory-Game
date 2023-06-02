@@ -19,7 +19,7 @@
     <h1 id="headline">Memory Game</h1>
     <div class="head">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row justify-content-between">
                 <div class="cards-number col-lg-auto col-md-auto col-sm-auto">
                     <div class="cards-number-headline" id="num-cards-div" title="number of cards">
                         <p>🃏:</p>
@@ -31,44 +31,21 @@
                         <input id="inputNumber" class="input-number" type="number" placeholder="--" max="30" />
                     </form>
                 </div>
-                <div class="col name-player">
+                <div class="col-auto name-player">
                     <h1 class="headline">GOOD LUCK </h1>
                     <h1 id="name-player"></h1>
                 </div>
-
-                <div id="scores" class="table col-lg-auto col-md-auto col-sm-auto">
-                    <div id="table-headline" class=" row">
-                        <p class="col-10">Memory Table:</p>
-                        <button class="reset-table-button button-white col-2" title="reset table score"
-                            id="reset-table">
-                            Reset Table
-                        </button>
-                    </div>
-                    <table>
-                        <thead>
-                            <tr class="row">
-                                <th class="col">Game</th>
-                                <th class="col">Pairs</th>
-                                <th class="col">Time</th>
-                            </tr>
-                        </thead>
-                        <tbody id="body-table">
-                            <!-- <tr class="row">
-                            <td class="col"></td>
-                            <td class="col"></td>
-                            <td class="col"></td>
-                        </tr> -->
-                        </tbody>
-                    </table>
-                </div>
-
             </div>
         </div>
     </div>
     <div id="head-container" class="container">
+        <div class="row" id="content">
+            <p>Please select the mode you want to play with:</p>
+            <p weight="500">↓</p>
+        </div>
         <div class="game-buttons row justify-content-center">
             <form class="game-countdown col-auto" id="countdown" title="play with countdown">
-                <input class="submit-button button-white" type="submit" value="countdown" />
+                <input class="submit-button button-white col-auto" type="submit" value="countdown" />
                 <!-- <input type="time" id="time" /> -->
             </form>
             <form class="game-clock col-auto " id="clock" title="play with clock">
@@ -80,6 +57,7 @@
         </div>
 
         <div class="timer-pairs row justify-content-center">
+
             <div class="timer col-6" title="game timer">
                 <p>🕑:</p>
                 <input id="timer" class="input-text" type="text" value="00:00" readonly />
@@ -91,7 +69,7 @@
         </div>
     </div>
     <div class="container-fluid col-11 justify-content-center" id="cards-container">
-        <div class="cards row d-flex justify-content-between" id="cards">
+        <div class="cards row d-flex justify-content-center" id="cards">
             <!-- <div class="card col-lg-auto col-md-auto col-sm-auto" id="0">
                 <div class="view front-view">
                     ❔
@@ -101,6 +79,31 @@
                 </div>
             </div> -->
         </div>
+    </div>
+
+    <div id="scores" class="table col-lg-auto col-md-auto col-sm-auto">
+        <div id="table-headline" class=" row">
+            <p class="col-10">Memory Table:</p>
+            <button class="reset-table-button button-white col-2" title="reset table score" id="reset-table">
+                Reset Table
+            </button>
+        </div>
+        <table>
+            <thead>
+                <tr class="row">
+                    <th class="col">Game</th>
+                    <th class="col">Pairs</th>
+                    <th class="col">Time</th>
+                </tr>
+            </thead>
+            <tbody id="body-table">
+                <!-- <tr class="row">
+                <td class="col"></td>
+                <td class="col"></td>
+                <td class="col"></td>
+            </tr> -->
+            </tbody>
+        </table>
     </div>
     <script src="game.js"></script>
 
