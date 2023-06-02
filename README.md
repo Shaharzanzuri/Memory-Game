@@ -19,7 +19,6 @@
 
 ## start the game
 <img width="261" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/19ffc83b-9814-43cc-9720-1e2032319807">
-<img width="901" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/3155b990-d1fe-4e18-9db0-7a279b2a65dd">
 <img width="921" alt="image" src="https://github.com/Shaharzanzuri/Memory-Game/assets/109790489/42660301-03d0-4b53-b677-4de399b6c8ce">
 
 ### score table :
